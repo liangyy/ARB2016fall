@@ -1,9 +1,9 @@
 function classifier = learner_libsvm(kernel, estimate_prob)
-    classifier.learn = @(x, y) learn(x, y, kernel, estimate_prob);
+    classifier.learn = @(x, y, model0) learn(x, y, model0, kernel, estimate_prob);
     classifier.predict = @(model, x) my_predict(model, x, estimate_prob);
 end
 
-function model = learn(X, y, kernel, estimate_prob)
+function model = learn(X, y, model0, kernel, estimate_prob)
     cmd = ['-s ', num2str(0), ' -t ', num2str(kernel), ' -b ', num2str(estimate_prob), ' -q 1'];
     model = svmtrain(y, X, cmd);
 end
