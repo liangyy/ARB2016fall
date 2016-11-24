@@ -1,4 +1,5 @@
-function [model, errors, costs] = random_learner(data, labels, buget, testd, testl, base_learner, report_step, initial_seed)
+function [model, errors, costs] = random_learner(data, labels, buget, ...
+    testd, testl, base_learner, report_step, initial_seed)
     n = size(data, 1);
     nt = size(testd, 1);
     active_idxs = 1 : n;
@@ -6,6 +7,7 @@ function [model, errors, costs] = random_learner(data, labels, buget, testd, tes
     errors = [];
     costs = [];
     counter = 0;
+    
     while initial_seed > 0
         query_index = random_draw(active_idxs(active_idxs(R == 0)));
         R(query_index) = 1;
@@ -25,12 +27,6 @@ function [model, errors, costs] = random_learner(data, labels, buget, testd, tes
             disp(['cost = ', num2str(i), ' error rate = ', num2str(errors(end))]);
         end
     end
-end
-
-function query_index = random_draw(indexs)
-    n = size(indexs);
-    temp = randi(n);
-    query_index = indexs(temp);
 end
         
         
