@@ -15,7 +15,10 @@ function [model, errors, costs] = random_learner(data, labels, buget, ...
         initial_seed = initial_seed - 1;
     end
     
-    model = [];
+    model = base_learner.learn(data(R == 1, :), labels(R == 1), []);
+    ytest_predict = base_learner.predict(model, testd);
+    errors = [errors; sum(ytest_predict ~= testl) / nt];
+    costs = [costs; counter];
     for i = 1 : buget - initial_seed
         query_index = random_draw(active_idxs(active_idxs(R == 0)));
         R(query_index) = 1;

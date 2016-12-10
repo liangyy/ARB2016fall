@@ -20,15 +20,25 @@ function [model, errors, costs] = uncertainty_based_learner(data, labels, buget,
         initial_seed = initial_seed - 1;
     end
     model = base_learner.learn(data(R == 1, :), labels(R == 1), []);
-    
+    ytest_predict = base_learner.predict(model, testd);
+    errors = [errors; sum(ytest_predict ~= testl) / nt];
+    costs = [costs; counter];
     % main body
     for i = 1 : buget - initial_seed
         % compute uncertainty
+%         tic;
         [~, estimated_prob] = base_learner.predict(model, data(R ~= 1, :));
+%         tttt = toc;
+%         disp(['time predict is ', num2str(tttt)]);
         query_index = bvsb(estimated_prob, R);
         R(query_index) = 1;
         counter = counter + 1;
+       
+%         tic;
         model = base_learner.learn(data(R == 1, :), labels(R == 1), model);
+%         tttt = toc;
+%         disp(['time learn is ', num2str(tttt)]);
+        
         if mod(i, report_step) == 1
             ytest_predict = base_learner.predict(model, testd);
             errors = [errors; sum(ytest_predict ~= testl) / nt];
