@@ -9,7 +9,7 @@ ncol = 26;
 [easy_test_x, easy_test_y, ~] = read_mydata(test_filename, ncol);
 
 
-buget = 60;
+buget = 2500;
 report_step = 20;
 %% random learner + libsvm
 rng(0);
@@ -45,5 +45,9 @@ id = easy_predict(:, 1);
 easy_predict_x = easy_predict(:, 2 : size(easy_predict, 2));
 
 [yt, estimated_prob] = base_learner_uncertainty.predict(model_uncertainty, easy_predict_x);
-out = [id, yt];
-csvwrite('svm_simple.csv', out);
+fid = fopen('svm_simple.csv', 'wt');
+t = encoding(yt);
+for i = 1 : size(id, 1)
+    fprintf(fid, '%d,%s\n', id(i), t{i});
+end
+fclose(fid);
