@@ -1,8 +1,8 @@
 %% test random learner
-addpath('libsvm-3.21/matlab');
+% addpath('libsvm-3.21/matlab');
 
-filename = 'Data/MODERATE_TRAIN.csv';
-test_filename = 'Data/MODERATE_TEST.csv';
+filename = 'Data/EASY_TRAIN.csv';
+test_filename = 'Data/EASY_TEST.csv';
 ncol = 26;
 
 [easy_x, easy_y, encoding] = read_mydata(filename, ncol);
@@ -11,17 +11,19 @@ ncol = 26;
 
 buget = 2500;
 report_step = 20;
-%% random learner + libsvm
+%% random learner + sparseLogit
 rng(0);
 initial_seed = 10; % initialize with 20 samples randomly selected from the pool
-base_learner_random = learner_libsvm(2, 0);
+numhidden = floor(size(easy_x, 2) * 3);
+base_learner_sparseLogit = learner_sparselogit(10, 50, 1e-4);
 [model_random, errors_random, costs_random] = random_learner(easy_x, easy_y, buget, ...
-    easy_test_x, easy_test_y, base_learner_random, report_step, initial_seed);
-%% uncertainty learner + libsvm
+    easy_test_x, easy_test_y, base_learner_sparseLogit, report_step, initial_seed);
+
+%% uncertainty learner + sparseLogit
 rng(0);
-base_learner_SVM = learner_libsvm(2, 1);
+base_learner_sparseLogit = learner_sparselogit(10, 50, 1e-4);
 [model_uncertainty, errors_uncertainty, costs_uncertainty] = uncertainty_based_learner(easy_x, easy_y, buget, ...
-    easy_test_x, easy_test_y, base_learner_SVM, report_step, initial_seed);
+    easy_test_x, easy_test_y, base_learner_sparseLogit, report_step, initial_seed);
 %% plot results
 figure;
 [~, trainname] = fileparts(filename);
@@ -33,19 +35,19 @@ hold on;
 plot(costs_uncertainty, errors_uncertainty);
 h = legend('random', 'uncertainty');
 set(h, 'FontSize', 14);
-text(0.4, 0.5, ['base learner = ', varname(base_learner_SVM)], 'FontSize', 13, 'Units','normalized');
+text(0.4, 0.5, ['base learner = ', varname(base_learner_sparseLogit)], 'FontSize', 13, 'Units','normalized');
 text(0.4, 0.45, ['train data = ', trainname], 'FontSize', 13, 'Units','normalized');
 text(0.4, 0.4, ['test data = ', testname], 'FontSize', 13, 'Units','normalized');
-saveas(h, 'svm_moderate.png', 'png');
+saveas(h, 'sparseLogit_simple.png', 'png');
 %% predict blinded
 
-predict_filename = 'Data/MODERATE_BLINDED.csv';
+predict_filename = 'Data/EASY_BLINDED.csv';
 easy_predict = csvread(predict_filename);
 id = easy_predict(:, 1);
 easy_predict_x = easy_predict(:, 2 : size(easy_predict, 2));
 
-[yt, estimated_prob] = base_learner_SVM.predict(model_uncertainty, easy_predict_x);
-fid = fopen('svm_moderate.csv', 'wt');
+[yt, estimated_prob] = base_learner_sparseLogit.predict(model_uncertainty, easy_predict_x);
+fid = fopen('sparseLogit_simple.csv', 'wt');
 t = encoding(yt);
 for i = 1 : size(id, 1)
     fprintf(fid, '%d,%s\n', id(i), t{i});

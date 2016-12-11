@@ -19,9 +19,9 @@ base_learner_random = learner_libsvm(2, 0);
     easy_test_x, easy_test_y, base_learner_random, report_step, initial_seed);
 %% uncertainty learner + libsvm
 rng(0);
-base_learner_uncertainty = learner_libsvm(2, 1);
+base_learner_SVM = learner_libsvm(2, 1);
 [model_uncertainty, errors_uncertainty, costs_uncertainty] = uncertainty_based_learner(easy_x, easy_y, buget, ...
-    easy_test_x, easy_test_y, base_learner_uncertainty, report_step, initial_seed);
+    easy_test_x, easy_test_y, base_learner_SVM, report_step, initial_seed);
 %% plot results
 figure;
 [~, trainname] = fileparts(filename);
@@ -33,7 +33,7 @@ hold on;
 plot(costs_uncertainty, errors_uncertainty);
 h = legend('random', 'uncertainty');
 set(h, 'FontSize', 14);
-text(0.4, 0.5, ['base learner = ', varname(base_learner_uncertainty)], 'FontSize', 13, 'Units','normalized');
+text(0.4, 0.5, ['base learner = ', varname(base_learner_SVM)], 'FontSize', 13, 'Units','normalized');
 text(0.4, 0.45, ['train data = ', trainname], 'FontSize', 13, 'Units','normalized');
 text(0.4, 0.4, ['test data = ', testname], 'FontSize', 13, 'Units','normalized');
 saveas(h, 'svm_simple.png', 'png');
@@ -44,7 +44,7 @@ easy_predict = csvread(predict_filename);
 id = easy_predict(:, 1);
 easy_predict_x = easy_predict(:, 2 : size(easy_predict, 2));
 
-[yt, estimated_prob] = base_learner_uncertainty.predict(model_uncertainty, easy_predict_x);
+[yt, estimated_prob] = base_learner_SVM.predict(model_uncertainty, easy_predict_x);
 fid = fopen('svm_simple.csv', 'wt');
 t = encoding(yt);
 for i = 1 : size(id, 1)

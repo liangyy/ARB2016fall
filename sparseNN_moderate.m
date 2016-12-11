@@ -9,7 +9,7 @@ ncol = 26;
 [easy_test_x, easy_test_y, ~] = read_mydata(test_filename, ncol);
 
 
-buget = 60;
+buget = 2500;
 report_step = 20;
 %% random learner + sparseNN
 rng(0);
