@@ -115,7 +115,7 @@ In this section, we show the results of our three base learners along with uncer
 \subsection{Base learner - SVM}
 
 The results of uncertainty sampling with SVM as base learner is shown in \Cref{fig:svm}. The y-axis is the rate of test error along learning and the x-axis is the number of queries (same for all the figures below if not specified).
-  \begin{figure}[!ht]
+  \begin{figure}[h]
     \begin{minipage}{.31\textwidth}
       \centering
       \includegraphics[width=1\linewidth]{../svm_simple}
@@ -137,8 +137,8 @@ The results of uncertainty sampling with SVM as base learner is shown in \Cref{f
 
 \subsection{Base learner - sparseLogit}
 
-The results of uncertainty sampling with sparseLogit as base learner is shown in \Cref{fig:sparseLogit}. 
-  \begin{figure}[!ht]
+The results of uncertainty sampling with sparseLogit as base learner is shown in \Cref{fig:sparseLogit}. The test error is high in sparseLogit, a possible reason of it is that the model complexity of sparseLogit is low (linear classifier), which might not be powerful enough for our datasets.
+  \begin{figure}[h]
     \begin{minipage}{.31\textwidth}
       \centering
       \includegraphics[width=1\linewidth]{../sparseLogit_simple}
@@ -157,12 +157,11 @@ The results of uncertainty sampling with sparseLogit as base learner is shown in
     \caption{The results of sparseLogit base learner (from left to right are the results of easy, moderate, and difficult datasets)}
     \label{fig:sparseLogit}
   \end{figure}
-The test error is high in sparseLogit, a possible reason of it is that the model complexity of sparseLogit is low (linear classifier), which might not be powerful enough for our datasets.
 
 \subsection{Base learner - sparseNN}
 
-The results of uncertainty sampling with sparseNN as base learner is shown in \Cref{fig:sparseNN}. 
-  \begin{figure}[!ht]
+The results of uncertainty sampling with sparseNN as base learner is shown in \Cref{fig:sparseNN}. As an "advanced " or "deep" version of sparseLogit, sparseNN achieved much better error rate since it is capable to model complicated nonlinear decision surface. And the big drop in plots may come from the fact that at the beginning the classifier gets stuck at some local optimum or flat terrace and when new data is added, such situation disappears since the objective also depends strongly on data. 
+  \begin{figure}[h]
     \begin{minipage}{.31\textwidth}
       \centering
       \includegraphics[width=1\linewidth]{../sparseNN_simple}
@@ -181,7 +180,7 @@ The results of uncertainty sampling with sparseNN as base learner is shown in \C
     \caption{The results of sparseNN base learner (from left to right are the results of easy, moderate, and difficult datasets)}
     \label{fig:sparseNN}
   \end{figure}
-As an "advanced " or "deep" version of sparseLogit, sparseNN 
+
 
 \section{Conclusion}
 

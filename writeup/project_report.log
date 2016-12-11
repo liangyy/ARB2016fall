@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  10 DEC 2016 23:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 DEC 2016 09:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -919,25 +919,28 @@ File: ../sparseLogit_difficult.png Graphic file (type png)
 Package pdftex.def Info: ../sparseLogit_difficult.png used on input line 155.
 (pdftex.def)             Requested size: 145.6229pt x 109.21194pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <../sparseNN_simple.png, id=73, 578.16pt x 433.62pt>
 File: ../sparseNN_simple.png Graphic file (type png)
 
 <use ../sparseNN_simple.png>
-Package pdftex.def Info: ../sparseNN_simple.png used on input line 168.
+Package pdftex.def Info: ../sparseNN_simple.png used on input line 167.
 (pdftex.def)             Requested size: 145.6229pt x 109.21194pt.
 
 <../sparseNN_moderate.png, id=74, 578.16pt x 433.62pt>
 File: ../sparseNN_moderate.png Graphic file (type png)
 
 <use ../sparseNN_moderate.png>
-Package pdftex.def Info: ../sparseNN_moderate.png used on input line 173.
+Package pdftex.def Info: ../sparseNN_moderate.png used on input line 172.
 (pdftex.def)             Requested size: 145.6229pt x 109.21194pt.
 
 <../sparseNN_difficult.png, id=75, 578.16pt x 433.62pt>
 File: ../sparseNN_difficult.png Graphic file (type png)
 
 <use ../sparseNN_difficult.png>
-Package pdftex.def Info: ../sparseNN_difficult.png used on input line 179.
+Package pdftex.def Info: ../sparseNN_difficult.png used on input line 178.
 (pdftex.def)             Requested size: 145.6229pt x 109.21194pt.
  [2 <../svm_simple.png (PNG copy)> <../svm_moderate.png (PNG copy)> <../svm_dif
 ficult.png (PNG copy)>] (./project_report.bbl)
@@ -945,14 +948,14 @@ ficult.png (PNG copy)>] (./project_report.bbl)
 y)> <../sparseLogit_difficult.png (PNG copy)> <../sparseNN_simple.png (PNG copy
 )> <../sparseNN_moderate.png (PNG copy)> <../sparseNN_difficult.png (PNG copy)>
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 190.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 190.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
  (./project_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 190.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 190.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 189.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 189.
 Package rerunfilecheck Info: File `project_report.out' has not changed.
 (rerunfilecheck)             Checksum: 19B48BEA02F16D4280807F9E0F5DA719;581.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 190.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 189.
  ) 
 Here is how much of TeX's memory you used:
  20647 strings out of 493089
@@ -975,7 +978,7 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-
 dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on project_report.pdf (3 pages, 572844 bytes).
+Output written on project_report.pdf (3 pages, 586438 bytes).
 PDF statistics:
  139 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
