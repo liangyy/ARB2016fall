@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{joshi2009multi}
+A.~J. Joshi, F.~Porikli, and N.~Papanikolopoulos, ``Multi-class active learning
+  for image classification,'' in {\em Computer Vision and Pattern Recognition,
+  2009. CVPR 2009. IEEE Conference on}, pp.~2372--2379, IEEE, 2009.
+
+\bibitem{wu2004probability}
+T.-F. Wu, C.-J. Lin, and R.~C. Weng, ``Probability estimates for multi-class
+  classification by pairwise coupling,'' {\em Journal of Machine Learning
+  Research}, vol.~5, no.~Aug, pp.~975--1005, 2004.
+
+\bibitem{CC01a}
+C.-C. Chang and C.-J. Lin, ``{LIBSVM}: A library for support vector machines,''
+  {\em ACM Transactions on Intelligent Systems and Technology}, vol.~2,
+  pp.~27:1--27:27, 2011.
+\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
+
+\end{thebibliography}
